@@ -1,0 +1,154 @@
+/* ======== VARIABLES Y ESTILOS GLOBALES ======== */
+:root {
+    --primary-color: #007bff;
+    --bg-light: #f8f9fa;
+    --text-light: #212529;
+    --bg-dark: #343a40;
+    --text-dark: #f8f9fa;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ======== MODO OSCURO (DARK MODE) ======== */
+body.dark {
+    --bg-light: #212529;
+    --text-light: #f8f9fa;
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+body.dark .bg-light {
+    background-color: var(--bg-dark) !important;
+}
+
+body.dark .card {
+    background-color: #495057; /* Un poco más claro que el fondo para destacar */
+    color: var(--text-dark);
+    border-color: var(--primary-color);
+}
+
+body.dark .navbar {
+    background-color: var(--bg-dark) !important;
+}
+
+body.dark .navbar-brand,
+body.dark .nav-link {
+    color: var(--text-dark) !important;
+}
+
+body.dark i {
+    color: var(--text-dark);
+}
+
+body.dark .text-dark {
+    color: var(--text-dark) !important;
+}
+
+body.dark .fab.fa-github {
+    color: var(--text-dark) !important; /* Github icon fix for dark mode */
+}
+
+/* ======== NAVBAR ======== */
+.navbar {
+    background-color: var(--primary-color);
+    transition: background-color 0.3s;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* ======== HERO SECTION ======== */
+.hero {
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+.hero h1 {
+    animation: fadeInUp 1.5s ease-out;
+}
+
+/* ======== ANIMACIONES ======== */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* ======== TARJETAS (CARDS) ======== */
+.project-card, .experience-card, .certificate-card {
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card {
+    border-color: var(--primary-color);
+    animation: heartbeat 3s infinite;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.experience-card {
+    border: 1px solid var(--primary-color);
+}
+
+/* ESTILOS AÑADIDOS PARA LAS TARJETAS DE CERTIFICADOS */
+.certificate-card {
+    border: 1px solid #dee2e6;
+}
+
+.certificate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .certificate-card .text-muted {
+    color: #adb5bd !important;
+}
+
+/* ======== ACCESIBILIDAD ======== */
+:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* ======== RESPONSIVE DESIGN ======== */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    .hero {
+        padding: 0 1rem;
+    }
+}
